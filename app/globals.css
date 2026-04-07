@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: #FFF8F0; color: #2D2016; -webkit-font-smoothing: antialiased; }
+
+/* Alphabet background - mixed Amharic + English drifting letters */
+.alpha-bg {
+  position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+}
+.alpha-bg::before {
+  content: 'ሀ A ለ B መ C ሰ D ረ E ሸ F በ G ተ H ነ I ከ J ወ K ዘ L የ M ደ N ገ O ፈ P ቀ Q ጠ R ጨ S ሀ T ለ U መ V ሰ W ረ X ሸ Y በ Z ሀ A ለ B መ C ሰ D ረ E ሸ F በ G ተ H ነ I ከ J ወ K ዘ L የ M ደ N ገ O ፈ P ቀ Q ጠ R ጨ S';
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  font-size: 26px; line-height: 54px; letter-spacing: 20px; word-spacing: 14px;
+  color: #D4942A; opacity: 0.05; transform: rotate(-12deg);
+  white-space: pre-wrap; font-family: Georgia, serif;
+  animation: drift-bg 60s linear infinite;
+}
+@keyframes drift-bg { from { transform: rotate(-12deg) translateY(0); } to { transform: rotate(-12deg) translateY(-200px); } }
+
+.warm-glow {
+  background: radial-gradient(ellipse at 50% 30%, rgba(229,168,50,0.07) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(45,184,159,0.04) 0%, transparent 50%);
+}
+
+/* Tap feedback */
+.tap-scale { transition: transform 0.1s; }
+.tap-scale:active { transform: scale(0.96); }
+
+/* Bubble float */
+@keyframes bubble-float {
+  0% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-20px) translateX(10px); }
+  66% { transform: translateY(-10px) translateX(-8px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+.bubble-float { animation: bubble-float 3s ease-in-out infinite; }
+
+/* Pop effect */
+@keyframes pop { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+.pop-out { animation: pop 0.3s ease forwards; }
+
+/* Flower growth */
+@keyframes grow-in { 0% { transform: scaleY(0); transform-origin: bottom; } 100% { transform: scaleY(1); } }
+.grow-in { animation: grow-in 0.5s ease forwards; }
+
+/* Screen shake */
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
+.screen-shake { animation: shake 0.4s ease; }
+
+/* Speaking glow */
+.speak-glow { animation: pulse-glow 1.5s ease-in-out infinite; }
+
+/* Soli bounce on celebrate */
+@keyframes soli-bounce { 0%,100% { transform: translateY(0); } 30% { transform: translateY(-12px); } 60% { transform: translateY(-4px); } }
+.soli-bounce { animation: soli-bounce 0.6s ease; }
+
+/* Wilt animation for garden */
+@keyframes wilt { 0% { transform: rotate(0); } 100% { transform: rotate(15deg); opacity: 0.5; } }
+.wilting { animation: wilt 2s ease forwards; }
+
+/* Hide scrollbar but allow scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
